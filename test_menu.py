@@ -85,6 +85,4 @@ def test_reset_app():
     about_button = driver.find_element(By.CSS_SELECTOR, '#reset_sidebar_link')
     about_button.click()
 
-    # assert driver.current_url == "https://saucelabs.com/"
-
     driver.quit()
