@@ -39,7 +39,7 @@ def test_add_item_from_catalog():
     driver.quit()
 
 
-# how to find element???
+# PASSED
 def test_remove_item_from_cart():
     driver.get("https://www.saucedemo.com/")
 
@@ -54,8 +54,14 @@ def test_remove_item_from_cart():
 
     time.sleep(3)
 
-    add_to_cart_btn = driver.find_element(By.XPATH, '//button[@data-test="add-to-cart-sauce-labs-backpack"]')
-    add_to_cart_btn.click()
+    add_to_cart_btn1 = driver.find_element(By.XPATH, '//button[@data-test="add-to-cart-sauce-labs-backpack"]')
+    add_to_cart_btn1.click()
+    add_to_cart_btn2 = driver.find_element(By.XPATH, '//button[@data-test="add-to-cart-sauce-labs-bike-light"]')
+    add_to_cart_btn2.click()
+
+    time.sleep(3)
+
+    cart_tag_before = driver.find_element(By.XPATH, '//*[@id="shopping_cart_container"]/a/span').text
 
     time.sleep(3)
 
@@ -69,8 +75,8 @@ def test_remove_item_from_cart():
 
     time.sleep(3)
 
-    shopping_cart_tag = driver.find_element(By.XPATH, '//span[@class="shopping_cart_badge"]')
+    cart_tag_after = driver.find_element(By.XPATH, '//*[@id="shopping_cart_container"]/a/span').text
 
-    # assert shopping_cart_tag.???
+    assert int(cart_tag_before) != int(cart_tag_after)
 
     driver.quit()
